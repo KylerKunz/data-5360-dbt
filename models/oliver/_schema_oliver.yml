@@ -11,5 +11,9 @@ models:
     description: "Oliver's Sweets Product Dimension"
   - name: oliver_dim_store
     description: "Oliver's Sweets Store Dimension"    
+  - name: stg_employee_certification
+    description: "Staging model of Oliver's certification data"   
   - name: fact_sales
     description: "Oliver's Sweets Sales Fact"
+  - name: fact_certification
+    description: "Oliver's Sweets Certification Fact. The grain is a single employees certification for a single certificate."   
