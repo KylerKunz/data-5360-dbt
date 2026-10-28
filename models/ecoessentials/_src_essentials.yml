@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: online_purchases_transactional
+    database: group5project
+    schema: ECOESSENTIALS_TRANSACTIONAL_DB
+    tables:
+      - name: customer
+      - name: order
+        identifier: '"ORDER"'
+      - name: order_line
+      - name: product
+      - name: promotional_campaign
+
+  - name: sales_force_email_events
+    database: group5project
+    schema: SOURCE_ECOESSENTIALS
+    tables:
+      - name: marketing_emails

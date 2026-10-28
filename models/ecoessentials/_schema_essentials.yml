@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_campaign_eco
+    description: "A dimension table for campaign info"
+  - name: dim_customer_eco
+    description: "A dimension table for customer info"
+  - name: dim_date_eco
+    description: "A dimension table for date info"
+  - name: dim_email_eco
+    description: "A dimension table for email info"
+  - name: dim_event_eco
+    description: "A dimension table for event types info"
+  - name: dim_order_eco
+    description: "A dimension table for order info"
+  - name: dim_product_eco
+    description: "A dimension table for product info"
+  - name: dim_subscriber_eco
+    description: "A dimension table for subscriber info"
+  - name: fact_email_event_eco
+    description: "A fact table for email events, one entry is an email sent to a specific subscriber"
+  - name: fact_order_line_eco
+    description: "A fact table for order line, one entry is a single item on a customers order"
