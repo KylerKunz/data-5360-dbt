@@ -26,7 +26,7 @@ models:
       Each record represents a call between a customer and an agent.
     columns:
       - name: issue_type
-        tests:
+        data_tests:
           - accepted_values:
               values:
                 - "New Claim"
@@ -42,7 +42,7 @@ models:
       Each record represents a call between a customer and an agent on a given date.
     columns:
       - name: customer_key
-        tests:
+        data_tests: # Updated to modern data_tests syntax
           - relationships:
-              to: ref('dim_customer') # the model you want to compare to
-              field: customer_key # the field on the model you want to compare to
+              to: ref('dim_customer')
+              field: customer_key
