@@ -3,17 +3,41 @@ version: 2
 models:
   - name: oliver_dim_customer
     description: "Oliver's Sweets Customer Dimension"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
   - name: oliver_dim_date
     description: "Oliver's Sweets Date Dimension"
   - name: oliver_dim_employee
     description: "Oliver's Sweets Employee Dimension"
   - name: oliver_dim_product
     description: "Oliver's Sweets Product Dimension"
+    columns:
+      - name: product_id
+        tests:
+          - not_null
   - name: oliver_dim_store
     description: "Oliver's Sweets Store Dimension"    
+    columns:
+      - name: store_name
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "East Gilbert"
+                  - "Franks Corner"
+                  - "North Skagway"
   - name: stg_employee_certification
     description: "Staging model of Oliver's certification data"   
   - name: fact_sales
     description: "Oliver's Sweets Sales Fact"
+    columns:
+      - name: cust_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('oliver_dim_customer')
+                field: cust_key    
   - name: fact_certification
     description: "Oliver's Sweets Certification Fact. The grain is a single employees certification for a single certificate."   
