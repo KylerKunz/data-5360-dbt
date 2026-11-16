@@ -3,21 +3,69 @@ version: 2
 models:
   - name: dim_campaign_eco
     description: "A dimension table for campaign info"
+    columns:
+      - name: campaign_key
+        tests:
+          - unique
   - name: dim_customer_eco
     description: "A dimension table for customer info"
+    columns:
+      - name: customer_key
+        tests:
+          - unique
   - name: dim_date_eco
     description: "A dimension table for date info"
+    columns:
+      - name: date_key
+        tests:
+          - not_null
   - name: dim_email_eco
     description: "A dimension table for email info"
+    columns:
+      - name: email_key
+        tests:
+          - not_null
   - name: dim_event_eco
     description: "A dimension table for event types info"
+    columns:
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "CLICK"
+                  - "OPEN"
+                  - "SENT"
   - name: dim_order_eco
     description: "A dimension table for order info"
+    columns:
+      - name: order_key
+        tests:
+          - not_null
   - name: dim_product_eco
     description: "A dimension table for product info"
+    columns:
+      - name: product_key
+        tests:
+          - not_null
   - name: dim_subscriber_eco
     description: "A dimension table for subscriber info"
+    columns:
+      - name: subscriber_key
+        tests:
+          - not_null
   - name: fact_email_event_eco
     description: "A fact table for email events, one entry is an email sent to a specific subscriber"
+    columns:
+      - name: eventtimestamp
+        tests:
+          - not_null
   - name: fact_order_line_eco
     description: "A fact table for order line, one entry is a single item on a customers order"
+    columns:
+      - name: product_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_product_eco')
+                field: product_key 
