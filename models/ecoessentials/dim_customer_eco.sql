@@ -42,7 +42,7 @@ final AS (
     p.customer_country,
     p.customer_zipcode
     FROM purchase p
-    LEFT JOIN email e
+    FULL JOIN email e
         ON p.customer_fname = e.subscriberfirstname
         AND p.customer_lname = e.subscriberlastname
         AND p.customer_email = e.subscriberemail
